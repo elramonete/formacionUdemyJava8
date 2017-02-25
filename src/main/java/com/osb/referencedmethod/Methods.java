@@ -1,9 +1,7 @@
 package com.osb.referencedmethod;
 
 import com.osb.referencedmethod.IHello;
-import java.lang.invoke.LambdaMetafactory;
 import java.util.Arrays;
-import java.util.Objects;
 
 
 /**
