@@ -1,5 +1,8 @@
 package ejercicioStreams;
 
+import io.reactivex.rxjava3.core.Observable;
+import reactor.core.publisher.Flux;
+
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -35,5 +38,27 @@ public class CrearStream1 {
         System.out.println("6- IntStream con Range no incluye el valor 6 Range: ");
         IntStream unoACinco = IntStream.range(1,6);
         unoACinco.forEach(System.out::println);
+
+        System.out.println("7- RxJava y Reactor");
+
+        System.out.println("**** rxjava Observable ****");
+        //rxjava
+        Observable<String> observable = Observable.just("hola", "Mundo", "RxJava");
+        observable.subscribe(System.out::println);
+
+        System.out.println("**** rxjava  ****");
+        Observable.range(1, 5)
+                .map(i -> i * 2)
+                .subscribe(System.out::println);
+
+        System.out.println("**** reactor Flux ****");
+        //reactor
+        Flux<String> flux = Flux.just("hola", "Mundo", "Reactor");
+        flux.subscribe(System.out::println);
+
+        System.out.println("**** reactor  ****");
+        Flux.range(1, 5)
+                .map(i -> i * 2)
+                .subscribe(System.out::println);
     }
 }

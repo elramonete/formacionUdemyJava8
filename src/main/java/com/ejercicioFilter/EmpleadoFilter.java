@@ -71,6 +71,17 @@ public class EmpleadoFilter implements Comparable {
         HOMBRE, MUJER;
     }
 
+    @Override
+    public String toString() {
+        return "EmpleadoFilter{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", ingresos=" + ingresos +
+                ", genero=" + genero +
+                ", edad=" + edad +
+                '}';
+    }
+
     public boolean esHombre(){
         return  this.genero == Genero.HOMBRE;
     }

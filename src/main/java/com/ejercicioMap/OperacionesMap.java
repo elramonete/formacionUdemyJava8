@@ -1,6 +1,8 @@
 package com.ejercicioMap;
 
 import com.ejercicioFilter.EmpleadoFilter;
+import io.reactivex.rxjava3.core.Observable;
+import reactor.core.publisher.Flux;
 
 import java.util.List;
 import java.util.function.IntUnaryOperator;
@@ -31,6 +33,21 @@ public class OperacionesMap {
                 .filter(emp -> emp.esMujer())
                 .filter(emp -> emp.getEdad() > 25)
                 .forEach(emp -> System.out.println(emp.getNombre() + " " +  emp.getEdad() + " " + emp.getIngresos()));
+
+        System.out.println("7- RxJava y Reactor");
+
+        System.out.println("**** rxjava Observable ****");
+        //rxjava
+        Observable<EmpleadoFilter> observable = Observable.fromIterable(empleados);
+        observable.filter(emp -> emp.getEdad() > 25)
+                .subscribe(System.out::println);
+
+        System.out.println("**** reactor Flux ****");
+        //reactor
+        Flux<EmpleadoFilter> flux = Flux.fromIterable(empleados);
+
+        flux.filter(emp -> emp.getEdad() > 25)
+                .subscribe(System.out::println);
 
         System.out.println("-----------------------------");
 
